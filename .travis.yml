@@ -12,7 +12,7 @@ script:
 
 after_success:
   - ls -l *
-  - cp ./nginx/custom_orig.conf ./dist/
+  - cp ./nginx/custom_orig.conf ./dist/nginx.conf
   - ls -l *
 
 deploy:
