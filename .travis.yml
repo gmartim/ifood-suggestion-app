@@ -1,0 +1,23 @@
+language: node_js
+node_js:
+  - "6"
+
+before_script:
+  - npm install -g @angular/cli
+  - npm install
+  - ng version
+
+script:
+  - ng build
+
+after_success:
+  - ls -l *
+
+deploy:
+  provider: bluemixcloudfoundry
+  skip_cleanup: true
+  manifest: manifest.yml
+  username: $BLUEMIX_USERNAME
+  password: $BLUEMIX_PASSWORD
+  organization: mmfconsulting.com.br
+  space: dev

@@ -1,0 +1,10 @@
+---
+applications:
+- buildpack: staticfile_buildpack
+  host: ifood-suggestion-app
+  name: ifood-suggestion-app
+  memory: 32M
+  path: dist
+  stack: cflinuxfs2
+  env:
+   PROXY_PASS_IFOOD-SUGGESTION: https://ifood-suggestion.mybluemix.net
