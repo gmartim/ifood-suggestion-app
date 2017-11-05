@@ -12,6 +12,8 @@ script:
 
 after_success:
   - ls -l *
+  - cp ./nginx/custom_orig.conf ./dist/
+  - ls -l *
 
 deploy:
   provider: bluemixcloudfoundry

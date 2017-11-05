@@ -1,0 +1,9 @@
+{
+	"/ifood-suggestion-api/*": {
+		"target": "http://localhost:8080/",
+		"pathRewrite": {
+			"^/ifood-suggestion-api": ""
+		},
+		"logLevel": "debug"
+	}
+}
