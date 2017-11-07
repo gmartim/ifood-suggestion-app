@@ -1,27 +1,46 @@
-# IfoodSuggestionApp
+# iFood Suggestion App
+
+Simple application that shows how to request to an API and present its response.
+
+## Angular CLI
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.5.0.
 
 ## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Run `ng serve --proxy-config proxy.config.json` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-## Code scaffolding
+## CI
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Continuous integration is set, using Travis CI for building and Bluemix for deploying.
 
-## Build
+## API's proxy
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
+A proxy is set to request to API from application using the same context.
 
-## Running unit tests
+The proxy is set in development by the file:
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+```javascript
+{
+	"/ifood-suggestion-api/*": {
+		"target": "http://localhost:8080/",
+		"pathRewrite": {
+			"^/ifood-suggestion-api": ""
+		},
+		"logLevel": "debug"
+	}
+}
+```
 
-## Running end-to-end tests
+And on Nginx (PaaS) by the setting:
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+```
+location /ifood-suggestion-api {
+	rewrite ^/ifood-suggestion-api(.*) /$1$is_args$args break;
+  proxy_pass https://ifood-suggestion.mybluemix.net;
+}
+```
 
-## Further help
+## Application's URL
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+[iFood Suggestion Application](https://ifood-suggestion-app.mybluemix.net/)
