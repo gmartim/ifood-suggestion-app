@@ -10,44 +10,44 @@
     <div class="tile is-ancestor">
       <div class="tile is-parent">
         <div class="tile is-child notification" style="background-color: white;">
-          <!--
-            <form [formGroup]="formGroup1" autocomplete="off">
-              <div class="field">
-                <label class="label">E-mail&nbsp;
-                  <span class="required">*</span>
-                </label>
-                <div class="control">
-                  <input class="input" type="text" placeholder="Informe seu e-mail" formControlName="email" [class.is-danger]="inputEmail.invalid && (inputEmail.dirty || inputEmail.touched)"
-                    #formGroup1_email maxlength="50" />
-                </div>
-                <div *ngIf="inputEmail.invalid && (inputEmail.dirty || inputEmail.touched)">
-                  <p *ngIf="inputEmail.errors.required" class="help is-danger">E-mail é obrigatório</p>
-                  <p *ngIf="inputEmail.errors.email" class="help is-danger">E-mail é inválido</p>
-                </div>
+          <form [formGroup]="formGroup1" autocomplete="off">
+            <div class="field">
+              <label class="label">Latitude&nbsp;
+                <span class="required">*</span>
+              </label>
+              <div class="control">
+                <input class="input" type="text" formControlName="latitude" [class.is-danger]="inputLatitude.invalid && (inputLatitude.dirty || inputLatitude.touched)"
+                />
               </div>
-              <div class="field">
-                <label class="label">Senha&nbsp;
-                  <span class="required">*</span>
-                </label>
-                <div class="control">
-                  <input class="input" type="password" placeholder="Informe sua senha" formControlName="senha" [class.is-danger]="inputSenha.invalid && (inputSenha.dirty || inputSenha.touched)"
-                    autocomplete="new-password" />
-                </div>
-                <div *ngIf="inputSenha.invalid && (inputSenha.dirty || inputSenha.touched)">
-                  <p *ngIf="inputSenha.errors.required" class="help is-danger">Senha é obrigatório</p>
-                </div>
+              <div *ngIf="inputLatitude.invalid && (inputLatitude.dirty || inputLatitude.touched)">
+                <p *ngIf="inputLatitude.errors.required" class="help is-danger">Latitude is required</p>
               </div>
-              <hr />
-              <div class="field is-grouped">
-                <div class="control">
-                  <button type="submit" class="button is-primary" (click)="login()" [disabled]="loading || !formGroup1.valid">Entrar</button>
-                </div>
-                <div class="control">
-                  <button type="reset" class="button" (click)="reset()">Limpar</button>
-                </div>
+            </div>
+            <div class="field">
+              <label class="label">Longitude&nbsp;
+                <span class="required">*</span>
+              </label>
+              <div class="control">
+                <input class="input" type="text" formControlName="longitude" [class.is-danger]="inputLongitude.invalid && (inputLongitude.dirty || inputLongitude.touched)"
+                />
               </div>
-            </form>
-          -->
+              <div *ngIf="inputLongitude.invalid && (inputLongitude.dirty || inputLongitude.touched)">
+                <p *ngIf="inputLongitude.errors.required" class="help is-danger">Longitude is required</p>
+              </div>
+            </div>
+            <hr />
+            <div class="field is-grouped">
+              <div class="control">
+                <button type="submit" class="button is-primary" (click)="search()" [disabled]="loading || !formGroup1.valid">Search</button>
+              </div>
+              <div class="control">
+                <button type="reset" class="button" (click)="reset()">Reset</button>
+              </div>
+            </div>
+          </form>
+          <div *ngIf="suggestion">
+            <hr /> {{ suggestion | json }}
+          </div>
         </div>
       </div>
     </div>

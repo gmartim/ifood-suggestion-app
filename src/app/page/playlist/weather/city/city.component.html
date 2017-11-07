@@ -10,44 +10,44 @@
     <div class="tile is-ancestor">
       <div class="tile is-parent">
         <div class="tile is-child notification" style="background-color: white;">
-          <!--
           <form [formGroup]="formGroup1" autocomplete="off">
             <div class="field">
-              <label class="label">E-mail&nbsp;
+              <label class="label">City&nbsp;
                 <span class="required">*</span>
               </label>
               <div class="control">
-                <input class="input" type="text" placeholder="Informe seu e-mail" formControlName="email" [class.is-danger]="inputEmail.invalid && (inputEmail.dirty || inputEmail.touched)"
-                  #formGroup1_email maxlength="50" />
+                <input class="input" type="text" formControlName="cityName" [class.is-danger]="inputCityName.invalid && (inputCityName.dirty || inputCityName.touched)"
+                />
               </div>
-              <div *ngIf="inputEmail.invalid && (inputEmail.dirty || inputEmail.touched)">
-                <p *ngIf="inputEmail.errors.required" class="help is-danger">E-mail é obrigatório</p>
-                <p *ngIf="inputEmail.errors.email" class="help is-danger">E-mail é inválido</p>
+              <div *ngIf="inputCityName.invalid && (inputCityName.dirty || inputCityName.touched)">
+                <p *ngIf="inputCityName.errors.required" class="help is-danger">City is required</p>
+                <p *ngIf="inputCityName.errors.maxlength" class="help is-danger">City should be 50 characters maximum</p>
               </div>
             </div>
             <div class="field">
-              <label class="label">Senha&nbsp;
-                <span class="required">*</span>
-              </label>
+              <label class="label">Country</label>
               <div class="control">
-                <input class="input" type="password" placeholder="Informe sua senha" formControlName="senha" [class.is-danger]="inputSenha.invalid && (inputSenha.dirty || inputSenha.touched)"
-                  autocomplete="new-password" />
+                <input class="input" type="countryCode" formControlName="countryCode" [class.is-danger]="inputCountryCode.invalid && (inputCountryCode.dirty || inputCountryCode.touched)"
+                />
               </div>
-              <div *ngIf="inputSenha.invalid && (inputSenha.dirty || inputSenha.touched)">
-                <p *ngIf="inputSenha.errors.required" class="help is-danger">Senha é obrigatório</p>
+              <div *ngIf="inputCountryCode.invalid && (inputCountryCode.dirty || inputCountryCode.touched)">
+                <p *ngIf="inputCountryCode.errors.minlength" class="help is-danger">Country should be 2 characters minimum</p>
+                <p *ngIf="inputCountryCode.errors.maxlength" class="help is-danger">Country should be 2 characters maximum</p>
               </div>
             </div>
             <hr />
             <div class="field is-grouped">
               <div class="control">
-                <button type="submit" class="button is-primary" (click)="login()" [disabled]="loading || !formGroup1.valid">Entrar</button>
+                <button type="submit" class="button is-primary" (click)="search()" [disabled]="loading || !formGroup1.valid">Search</button>
               </div>
               <div class="control">
-                <button type="reset" class="button" (click)="reset()">Limpar</button>
+                <button type="reset" class="button" (click)="reset()">Reset</button>
               </div>
             </div>
           </form>
-        -->
+          <div *ngIf="suggestion">
+            <hr /> {{ suggestion | json }}
+          </div>
         </div>
       </div>
     </div>
